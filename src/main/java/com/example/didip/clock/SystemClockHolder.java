@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Clock;
 
-// 실제 배포환경에서 사용
+// 스프링 빈 등록을 통해, 실제 배포환경에서 사용
 @Component
 public class SystemClockHolder implements ClockHolder{
     @Override
