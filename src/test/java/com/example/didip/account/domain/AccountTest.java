@@ -1,6 +1,7 @@
 package com.example.didip.account.domain;
 
 import com.example.didip.testability.account.domain.Account;
+import com.example.didip.testability.uuid.MockUUIDHolder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -49,5 +50,19 @@ class AccountTest {
         assertThat(account.getAuthToken()).isEqualTo(expectedAuthToken);
     }
 
+    @Test
+    @DisplayName("내맘대로 테스트")
+    void V2_계좌생성_UUID() {
+        // given
+        String username = "테스터";
+        String uuid = new MockUUIDHolder(UUID.randomUUID().toString()).randomUUID();
+
+        // when
+        Account account = Account.createV2(username, uuid);
+
+        //then
+        assertThat(account.getUsername()).isEqualTo("테스터");
+        assertThat(account.getAuthToken()).isEqualTo(uuid);
+    }
 
 }
